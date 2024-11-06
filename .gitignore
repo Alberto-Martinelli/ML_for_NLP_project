@@ -1,4 +1,6 @@
 archive/
+reviews.csv
+project_1_instructions.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
