@@ -1,20 +1,33 @@
 ## **Project One: TripAdvisor Recommendation Challenge - Beating BM25**
 _**Authors:** Alberto MARTINELLI, Alessia SARRITZU_
 
-The goal of the project is to develop a recommendation system that relies solely on user reviews to suggest similar places based on given queries. The system will propose the most relevant location based on the text of the reviews.
+### **Introduction**
+The goal of this project is to develop an unsupervised recommendation system that uses user reviews to suggest similar locations, outperforming the BM25 baseline. The system is evaluated using **Mean Squared Error (MSE)** between query and recommended location ratings, focusing exclusively on review text.
 
-1. **Data pre-processing**:
-    - Utilise only the reviews where ratings are composed strictly with this aspects on reviews with ratings for the following aspects: **service**, **cleanliness**, **overall**, **value**, **location**, **sleep quality**, and **rooms**.
-    - Concatenate reviews by `offering_id` to compute average ratings for evaluation.
+### **Development Phases**
+1. **Data and Libraries import**
+   - Import the dataset.
+   - Import the necessary libraries.
+   - Initialize necessary variables and utilities.
 
-2. **BM25 Implementation**:
-    - Implement a BM25 baseline using the **Rank-BM25** library.
-    - Measure the performance of BM25 through Mean Square Error (MSE) between the ratings of the query place and the recommended place.
+2. **Data Preparation:**
+   - Filter reviews to include only those with ratings strictly covering seven aspects: **service**, **cleanliness**, **overall**, **value**, **location**, **sleep quality**, and **rooms**.
+   - Concatenate reviews by `offering_id` and compute average ratings for each aspect to represent each location.
+   - Take a random sample of 100 queries from the dataset for consistent evaluation of model performance.
 
-3. **Enhanced Unsupervised Model**:
-    - Create a new unsupervised model to outperform BM25, potentially integrating it with other methods, while ensuring the model does not directly utilize ratings in its learning process.
-    - Measure performance of the **Enhanced Model** through Mean Square Error (MSE) between the ratings of the query place and the recommended place, with the aim of achieving a lower MSE than the BM25 baseline.
+3. **Data Pre-Processing:**
+   - Apply text preprocessing to standardize review text:
+     - Tokenization: Split text into words.
+     - Stop word removal: Exclude common, irrelevant words.
+     - Lemmatization: Reduce words to their base forms.
 
-4. **To Deliver**:
-    - A **report** detailing the techniques and approaches used, along with results and analysis.
-    - A shared Colab notebook that contains the implementation of the project.
+4. **BM25 Implementation:**
+   - Use the **Rank-BM25** library to recommend locations based on textual similarity.
+   - Evaluate performance by calculating MSE between query and recommended location ratings.
+
+5. **Enhanced Model Implementation:**
+   - Create a more advanced unsupervised model to outperform BM25.
+   - Use **TF-IDF vectorization** and **cosine similarity** to capture semantic relationships between reviews.
+
+6. **Evaluation and Comparison:**
+   - Compare MSE results to determine the improved performance of the enhanced model.
